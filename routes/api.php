@@ -23,9 +23,11 @@ Route::group(['namespace' => 'Api'], function(){
         Route::post('login', 'AuthController@login');
 
         Route::middleware('jwt.auth')->group(function (){
+            // After login
+            // Auth
             Route::post('logout', 'AuthController@logout');
             Route::get('user', 'AuthController@user');
-            // After login
+
         });
 
         Route::middleware('jwt.refresh')->group(function (){
@@ -33,4 +35,13 @@ Route::group(['namespace' => 'Api'], function(){
         });
 
     });
+
+    // After login
+    Route::group(['namespace' => 'Staff', 'prefix' => 'staff', 'middleware' => 'jwt.auth'], function(){
+        // Staff
+        Route::get('staff-list', 'StaffController@index');
+
+    });
+
+
 });
