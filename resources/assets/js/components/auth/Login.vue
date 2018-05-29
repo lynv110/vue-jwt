@@ -3,7 +3,7 @@
         <div class="login_wrapper">
             <div class="animate form login_form">
                 <section class="login_content">
-                    <form @submit.prevent="login" method="post">
+                    <form @submit="login" method="post">
                         <h1>Login</h1>
                         <div class="alert alert-danger" v-if="error">
                             {{ error }}
@@ -11,10 +11,12 @@
                         </div>
 
                         <div>
-                            <input type="text" class="form-control" value="" placeholder="Username" v-model="username" name="username" required/>
+                            <input type="text" class="form-control" value="" placeholder="Username" v-model="username"
+                                   name="username" required/>
                         </div>
                         <div>
-                            <input type="password" class="form-control" name="password" placeholder="Password" required/>
+                            <input type="password" class="form-control" name="password" v-model="password"
+                                   placeholder="Password" required/>
                         </div>
                         <div>
                             <button type="submit" class="btn btn-primary submit">Login</button>
@@ -33,14 +35,29 @@
 
     export default {
 
-        data: () => ({
-            error: '',
-            username: '',
-            password: '',
-        }),
+        data() {
+            return {
+                username: null,
+                password: null,
+                error: false
+            }
+        },
 
-        mounted() {
-            console.log('Component mounted.')
-        }
+        methods: {
+            login(event) {
+                event.preventDefault();
+                axios.post('/auth/login', {
+                    username: this.username,
+                    password: this.password,
+                }).then(function (response) {
+                    console.log(response);
+                    localStorage.setItem('token', response.headers.authorization);
+                    console.log(localStorage.getItem('token'));
+
+                }).catch(function (error) {
+                    console.log(error);
+                });
+            },
+        },
     }
 </script>
