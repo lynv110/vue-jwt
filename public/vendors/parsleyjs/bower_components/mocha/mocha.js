@@ -6343,7 +6343,7 @@ function Buffer (arg) {
   this.length = 0
   this.parent = undefined
 
-  // Common case.
+  // common case.
   if (typeof arg === 'number') {
     return fromNumber(this, arg)
   }
@@ -11501,7 +11501,7 @@ function hasOwnProperty(obj, prop) {
         }
         newPos += component.count;
 
-        // Common case
+        // common case
         if (!component.added) {
           oldPos += component.count;
         }

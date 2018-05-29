@@ -24,7 +24,7 @@
  *      <pre class="prettyprint lang-hs">(my lisp code)</pre>
  * The lang-cl class identifies the language as common lisp.
  * This file supports the following language extensions:
- *     lang-cl - Common Lisp
+ *     lang-cl - common Lisp
  *     lang-el - Emacs Lisp
  *     lang-lisp - Lisp
  *     lang-scm - Scheme

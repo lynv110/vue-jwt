@@ -68,7 +68,7 @@ class ForgotController extends Controller
     protected function sendMail($info) {
 
         $mail_init = [
-            'name_from' => 'Staff Administrator',
+            'name_from' => 'staff Administrator',
             'name_to' => isset($info['name_to']) ? $info['name_to'] : '',
             'from' => 'admin@staff.com',
             'to' => isset($info['email_to']) ? $info['email_to'] : '',

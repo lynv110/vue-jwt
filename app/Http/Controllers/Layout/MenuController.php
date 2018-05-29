@@ -23,7 +23,7 @@ class MenuController extends Controller {
         ];
 
         if (Staff::isRoot()) {
-            // Staff
+            // staff
             $menus[] = [
                 'name' => trans('menu.text_staff'),
                 'icon' => 'fa fa-dot-circle-o',
@@ -54,7 +54,7 @@ class MenuController extends Controller {
                 'href' => url('profile ')
             ];
         } else {
-            // Staff
+            // staff
             $menus[] = [
                 'name' => trans('menu.text_staff_list'),
                 'icon' => 'fa fa-dot-circle-o',

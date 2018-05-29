@@ -291,7 +291,7 @@
 	  this.length = 0
 	  this.parent = undefined
 
-	  // Common case.
+	  // common case.
 	  if (typeof arg === 'number') {
 	    return fromNumber(this, arg)
 	  }

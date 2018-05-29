@@ -15988,7 +15988,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        }
 	    };
 
-	    // Common handlers
+	    // common handlers
 	    util.each(['click', 'mousedown', 'mouseup', 'mousewheel', 'dblclick'], function (name) {
 	        domHandlers[name] = function (event) {
 	            event = normalizeEvent(this.root, event);

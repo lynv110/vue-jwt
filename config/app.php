@@ -189,6 +189,8 @@ return [
         App\Providers\ValidationExtensionServiceProvider::class,
         App\Providers\ExportServiceProvider::class,
 
+        Tymon\JWTAuth\Providers\LaravelServiceProvider::class,
+
     ],
 
     /*
@@ -240,6 +242,8 @@ return [
         'Staff' => App\Facades\Staff::class,
         'FlashHandle' => App\Facades\FlashHandle::class,
         'Export' => App\Facades\Export::class,
+
+        'JWTAuth' => Tymon\JWTAuth\Facades\JWTAuth::class,
     ],
 
 ];

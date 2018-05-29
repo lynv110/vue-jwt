@@ -13,7 +13,7 @@ class DatabaseSeeder extends Seeder
     {
         // Default root account
         DB::table('staff')->insert([
-            'name' => 'Staff Admin',
+            'name' => 'staff Admin',
             'telephone' => '0986087298',
             'gender' => '0',
             'email' => 'admin@admin.admin',

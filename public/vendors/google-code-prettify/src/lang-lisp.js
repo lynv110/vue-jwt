@@ -16,7 +16,7 @@
 
 /**
  * @fileoverview
- * Registers a language handler for Common Lisp and related languages.
+ * Registers a language handler for common Lisp and related languages.
  *
  *
  * To use, include prettify.js and this file in your HTML page.
@@ -24,7 +24,7 @@
  *      <pre class="prettyprint lang-lisp">(my lisp code)</pre>
  * The lang-cl class identifies the language as common lisp.
  * This file supports the following language extensions:
- *     lang-cl - Common Lisp
+ *     lang-cl - common Lisp
  *     lang-el - Emacs Lisp
  *     lang-lisp - Lisp
  *     lang-scm - Scheme
@@ -58,7 +58,7 @@
  *            |
  *
  *
- * I used <a href="http://gigamonkeys.com/book/">Practical Common Lisp</a> as
+ * I used <a href="http://gigamonkeys.com/book/">Practical common Lisp</a> as
  * the basis for the reserved word list.
  *
  *
