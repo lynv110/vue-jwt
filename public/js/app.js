@@ -44081,8 +44081,8 @@ var render = function() {
             _vm._v(" "),
             _c("layout-flash", {
               attrs: {
-                alert_type: _vm.alert_type,
-                alert_message: _vm.alert_message
+                alertType: _vm.alert_type,
+                alertMessage: _vm.alert_message
               }
             }),
             _vm._v(" "),
@@ -45649,12 +45649,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
-        return {
-            alert: "alert alert-error"
-        };
+        return {};
     },
 
-    props: ['alert_type', 'alert_message']
+    props: ['alertType', 'alertMessage']
 });
 
 /***/ }),
@@ -45665,8 +45663,8 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm.alert_message
-    ? _c("div", { class: _vm.alert }, [
+  return _vm.alertMessage
+    ? _c("div", { class: _vm.alertType }, [
         _c(
           "button",
           {
@@ -45681,7 +45679,7 @@ var render = function() {
         ),
         _vm._v(" "),
         _vm._m(0),
-        _vm._v("\n    " + _vm._s(_vm.alert_message) + "\n")
+        _vm._v("\n    " + _vm._s(_vm.alertMessage) + "\n")
       ])
     : _vm._e()
 }

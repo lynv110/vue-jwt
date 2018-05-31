@@ -13,7 +13,7 @@
                 </div>
                 <div class="clearfix"></div>
                 <!--Flash-->
-                <layout-flash :alert_type="alert_type" :alert_message="alert_message"></layout-flash>
+                <layout-flash :alertType="alert_type" :alertMessage="alert_message"></layout-flash>
                 <!--/Flash-->
 
                 <!--Content-->
