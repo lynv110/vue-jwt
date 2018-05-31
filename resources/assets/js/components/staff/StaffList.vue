@@ -12,6 +12,10 @@
                     </div>
                 </div>
                 <div class="clearfix"></div>
+                <!--Flash-->
+                <layout-flash :alert_type="alert_type" :alert_message="alert_message"></layout-flash>
+                <!--/Flash-->
+
                 <!--Content-->
                 <div class="row">
                     <div class="col-md-12 col-sm-12 col-xs-12">
@@ -38,24 +42,20 @@
                                         <tbody>
                                         <tr>
                                             <td></td>
-                                            <td><input type="text" class="form-control" value="" name="filter_name">
+                                            <td><input type="text" class="form-control" v-model="filter_name" name="filter_name">
                                             </td>
-                                            <td><input type="text" class="form-control" value=""
-                                                       name="filter_telephone"></td>
-                                            <td><input type="text" class="form-control" value="" name="filter_username">
-                                            </td>
-                                            <td><input type="text" class="form-control" value="" name="filter_email">
-                                            </td>
+                                            <td><input type="text" class="form-control" v-model="filter_telephone" name="filter_telephone"></td>
+                                            <td></td>
+                                            <td></td>
                                             <td class="text-center">
-                                                <select name="filter_status" id="status"
-                                                        class="form-control col-md-7 col-xs-12">
+                                                <select name="filter_status" v-model="filter_status" class="form-control col-md-7 col-xs-12">
                                                     <option value=""></option>
                                                     <option value="0">Disable</option>
                                                     <option value="1">Enable</option>
                                                 </select>
                                             </td>
                                             <td class="text-right">
-                                                <a class="btn btn-sm btn-primary filter">Filter</a>
+                                                <a class="btn btn-sm btn-primary filter" @click="filter">Filter</a>
                                             </td>
                                         </tr>
                                         <tr v-if="staffs" v-for="(staff, key) in staffs">
@@ -100,13 +100,21 @@
 
     import LayoutNav from '../Layout/Nav.vue'
     import LayoutMenu from '../Layout/Menu.vue'
+    import LayoutFlash from '../Layout/Flash.vue'
 
     export default {
 
         data: () => {
             return {
                 heading_title: '',
-                staffs: []
+                staffs: [],
+
+                filter_name: '',
+                filter_telephone: '',
+                filter_status: '',
+
+                alert_type: '',
+                alert_message: '',
             }
         },
 
@@ -126,9 +134,29 @@
             });
         },
 
+        methods: {
+            filter(e) {
+                e.preventDefault();
+                let config = {
+                    headers: {'Authorization': `Bearer ${localStorage.getItem('token')}`},
+                };
+
+                let parameter = `?filter_name=${this.filter_name}&filter_telephone=${this.filter_telephone}&filter_status=${this.filter_status}`;
+
+                axios.get('/staff/staff-list' + parameter, config).then((response) => {
+                    console.log(response);
+                    this.staffs = response.data.staffs;
+
+                }).catch(function (error) {
+                    console.log(error);
+                });
+            }
+        },
+
         components: {
             LayoutNav: LayoutNav,
             LayoutMenu: LayoutMenu,
+            LayoutFlash: LayoutFlash,
         }
     }
 </script>

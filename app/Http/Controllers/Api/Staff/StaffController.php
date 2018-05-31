@@ -24,22 +24,24 @@ class StaffController extends Controller
         $this->staffModel = $staffModel;
     }
 
-    public function index(Request $request) {
+    public function index() {
 
-        $token = $request->bearerToken();
-        $staff = JWTAuth::parseToken($token)->authenticate();
+        $filterName = \Request::get('filter_name') ? \Request::get('filter_name') : '';
+        $filterTelephone = \Request::get('filter_telephone') ? \Request::get('filter_telephone') : '';
+        $filterStatus = \Request::has('filter_status') ? \Request::get('filter_status') : '';
 
         $filter = [
+            'filter_name' => $filterName,
+            'filter_status' => $filterStatus,
+            'filter_telephone' => $filterTelephone,
             'sort' => 'name',
             'order' => 'asc',
+            'paginate' => false,
         ];
 
         return response([
             'staffs' => $this->staffModel->getList($filter),
             'status' => 'success',
-            'staff' => $staff,
-            'staff_id' => $staff->id,
-            'token' => $token,
             'heading_title' => trans('staff.heading_title')
         ]);
     }
