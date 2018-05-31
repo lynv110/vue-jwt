@@ -39,7 +39,7 @@ class MenuController extends Controller
             'total' => DB::table('staff')->count() - 1,
         ];
 
-        // Position
+        /*// Position
         $menus[] = [
             'name' => trans('menu.text_position'),
             'icon' => 'fa fa-dot-circle-o',
@@ -60,7 +60,7 @@ class MenuController extends Controller
             'name' => trans('menu.text_profile'),
             'icon' => 'fa fa-dot-circle-o',
             'href' => 'profile'
-        ];
+        ];*/
 
         return $menus;
     }

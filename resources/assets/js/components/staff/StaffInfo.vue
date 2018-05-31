@@ -22,118 +22,93 @@
                             </div>
                             <div class="x_content">
                                 <br/>
-                                <div class="row">
+                                <div class="row" v-if="staff">
                                     <div class="col-xs-12 col-sm-7">
                                         <div class="form-group row">
-                                            <label class="control-label col-md-3 col-sm-3 col-xs-12 text-right" for="name">{{ trans('staff.text_name') }}</label>
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12 text-right" >Full name</label>
                                             <div class="col-md-9 col-sm-9 col-xs-12">
-                                                {{ $info->name }}
+                                                {{ staff.name }}
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label class="control-label col-md-3 col-sm-3 col-xs-12 text-right" for="name">{{ trans('staff.text_telephone') }}</label>
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12 text-right">Telephone</label>
                                             <div class="col-md-9 col-sm-9 col-xs-12">
-                                                {{ $info->telephone }}
+                                                {{ staff.telephone }}
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label class="control-label col-md-3 col-sm-3 col-xs-12 text-right" for="name">{{ trans('staff.text_address') }}</label>
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12 text-right">Address</label>
                                             <div class="col-md-9 col-sm-9 col-xs-12">
-                                                {{ $info->address }}
+                                                {{ staff.address }}
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label class="control-label col-md-3 col-sm-3 col-xs-12 text-right" for="name">{{ trans('staff.text_gender') }}</label>
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12 text-right">Gender</label>
                                             <div class="col-md-9 col-sm-9 col-xs-12">
-                                                @if($info->gender == '0')
-                                                {{ trans('staff.text_male') }}
-                                                @elseif($info->gender == '1')
-                                                {{ trans('staff.text_female') }}
-                                                @else
-                                                {{ trans('staff.text_other') }}
-                                                @endif
+                                                <span v-if="staff.gender == '0'">Male</span>
+                                                <span v-else-if="staff.gender == '1'">Female</span>
+                                                <span v-else>Other</span>
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label class="control-label col-md-3 col-sm-3 col-xs-12 text-right" for="name">{{ trans('staff.text_birthday') }}</label>
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12 text-right">Birthday</label>
                                             <div class="col-md-9 col-sm-9 col-xs-12">
-                                                {{ date_to_list($info->birthday) }}
+                                                {{ staff.birthday }}
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label class="control-label col-md-3 col-sm-3 col-xs-12 text-right" for="name">{{ trans('staff.text_created_at') }}</label>
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12 text-right">Created at</label>
                                             <div class="col-md-9 col-sm-9 col-xs-12">
-                                                {{ datetime_to_list($info->created_at) }}
+                                                {{ staff.created_at }}
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label class="control-label col-md-3 col-sm-3 col-xs-12 text-right" for="name">{{ trans('staff.text_modified_at') }}</label>
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12 text-right">Modified at</label>
                                             <div class="col-md-9 col-sm-9 col-xs-12">
-                                                {{ datetime_to_list($info->modified_at) }}
+                                                {{ staff.modified_at }}
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label class="control-label col-md-3 col-sm-3 col-xs-12 text-right" for="name">{{ trans('staff.text_login_at') }}</label>
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12 text-right">Latest logged</label>
                                             <div class="col-md-9 col-sm-9 col-xs-12">
-                                                {{ datetime_to_list($info->login_at) }}
+                                                {{ staff.login_at }}
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label class="control-label col-md-3 col-sm-3 col-xs-12 text-right" for="name">{{ trans('staff.text_part') }}</label>
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12 text-right">Part</label>
                                             <div class="col-md-9 col-sm-9 col-xs-12">
-                                                @if($parts)
-                                                <ul>
-                                                    @foreach($parts as $part)
-                                                    <li>{{ $part }}</li>
-                                                    @endforeach
+                                                <ul v-if="parts">
+                                                    <li v-for="part in parts">{{ part }}</li>
                                                 </ul>
-                                                @endif
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label class="control-label col-md-3 col-sm-3 col-xs-12 text-right" for="name">{{ trans('staff.text_position') }}</label>
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12 text-right">Position</label>
                                             <div class="col-md-9 col-sm-9 col-xs-12">
-                                                @if($positions)
-                                                <ul>
-                                                    @foreach($positions as $position)
-                                                    <li>{{ $position }}</li>
-                                                    @endforeach
+                                                <ul v-if="positions">
+                                                    <li v-for="position in positions">{{ position }}</li>
                                                 </ul>
-                                                @endif
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-xs-12 col-sm-5">
                                         <div class="form-group row">
-                                            <label class="control-label col-md-4 col-sm-4 col-xs-12 text-right" for="avatar">{{ trans('staff.text_avatar') }}</label>
+                                            <label class="control-label col-md-4 col-sm-4 col-xs-12 text-right">Email</label>
                                             <div class="col-md-8 col-sm-8 col-xs-12">
-                                                @if(is_file(config('image.path') . $info->avatar))
-                                                <img src="{{ image_fit($info->avatar, 100, 100) }}" alt="" class="img-thumbnail">
-                                                @else
-                                                <img src="{{ no_image() }}" alt="" class="img-thumbnail">
-                                                @endif
+                                                {{ staff.email }}
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label class="control-label col-md-4 col-sm-4 col-xs-12 text-right" for="name">{{ trans('staff.text_email') }}</label>
+                                            <label class="control-label col-md-4 col-sm-4 col-xs-12 text-right">Username</label>
                                             <div class="col-md-8 col-sm-8 col-xs-12">
-                                                {{ $info->email }}
+                                                {{ staff.username }}
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label class="control-label col-md-4 col-sm-4 col-xs-12 text-right" for="name">{{ trans('staff.text_username') }}</label>
+                                            <label class="control-label col-md-4 col-sm-4 col-xs-12 text-right">Status</label>
                                             <div class="col-md-8 col-sm-8 col-xs-12">
-                                                {{ $info->username }}
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label class="control-label col-md-4 col-sm-4 col-xs-12 text-right" for="name">{{ trans('main.text_status') }}</label>
-                                            <div class="col-md-8 col-sm-8 col-xs-12">
-                                                @if($info->status)
-                                                {{ trans('main.text_enabled') }}
-                                                @else
-                                                {{ trans('main.text_disabled') }}
-                                                @endif
+                                                <span v-if="staff.status">Enable</span>
+                                                <span v-else>Disable</span>
                                             </div>
                                         </div>
                                     </div>

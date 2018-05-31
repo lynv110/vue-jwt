@@ -7,7 +7,6 @@
                         <h1>Login</h1>
                         <div class="alert alert-danger" v-if="error">
                             {{ error }}
-                            <!--There was an error, unable to sign in with those credentials.-->
                         </div>
 
                         <div>
@@ -49,10 +48,16 @@
                 axios.post('/auth/login', {
                     username: this.username,
                     password: this.password,
-                }).then(function (response) {
+                }).then((response) => {
                     console.log(response);
                     localStorage.setItem('token', response.headers.authorization);
                     console.log(localStorage.getItem('token'));
+
+                    if  (response.data.success){
+                        this.$router.push('/dashboard');
+                    }else if(response.data.msg) {
+                        this.error = response.data.msg;
+                    }
 
                 }).catch(function (error) {
                     console.log(error);

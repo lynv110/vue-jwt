@@ -15,14 +15,14 @@ class AuthController extends Controller
         $credentials = $request->only('username', 'password');
         if (!$token = JWTAuth::attempt($credentials)) {
             return response([
-                'status' => 'error',
+                'success' => false,
                 'msg' => 'Invalid Credentials.'
-            ], 400);
+            ]);
         }
 
         $user = StaffModel::findOrFail(Auth::id());
         return response([
-            'status' => 'success',
+            'success' => true,
             'user' => $user
         ])->header('Authorization', $token);
     }

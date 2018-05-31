@@ -40840,7 +40840,6 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vue_
 
 
 
-
 /* harmony default export */ __webpack_exports__["a"] = (new __WEBPACK_IMPORTED_MODULE_1_vue_router__["a" /* default */]({
     mode: 'history',
     routes: [{ path: '/', redirect: '/login', meta: { auth: false } }, { path: '/login', name: 'AuthLogin', component: __WEBPACK_IMPORTED_MODULE_2__components_auth_Login_vue___default.a, meta: { auth: false } }, { path: '/dashboard', name: 'CommonDashboard', component: __WEBPACK_IMPORTED_MODULE_3__components_common_Dashboard_vue___default.a, meta: { auth: true } }, { path: '/staff-list', name: 'StaffStaffList', component: __WEBPACK_IMPORTED_MODULE_4__components_staff_StaffList_vue___default.a, meta: { auth: true } }, { path: '/staff-edit', name: 'StaffStaffEdit', component: __WEBPACK_IMPORTED_MODULE_6__components_staff_StaffEdit_vue___default.a, meta: { auth: true } }, { path: '/staff-info', name: 'StaffStaffInfo', component: __WEBPACK_IMPORTED_MODULE_5__components_staff_StaffInfo_vue___default.a, meta: { auth: true } }]
@@ -43563,7 +43562,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -43578,6 +43576,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     methods: {
         login: function login(event) {
+            var _this = this;
+
             event.preventDefault();
             axios.post('/auth/login', {
                 username: this.username,
@@ -43586,6 +43586,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 console.log(response);
                 localStorage.setItem('token', response.headers.authorization);
                 console.log(localStorage.getItem('token'));
+
+                if (response.data.success) {
+                    _this.$router.push('/dashboard');
+                } else if (response.data.msg) {
+                    _this.error = response.data.msg;
+                }
             }).catch(function (error) {
                 console.log(error);
             });
@@ -43613,7 +43619,7 @@ var render = function() {
                   _vm._v(
                     "\n                        " +
                       _vm._s(_vm.error) +
-                      "\n                        "
+                      "\n                    "
                   )
                 ])
               : _vm._e(),
@@ -45009,31 +45015,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 
@@ -45076,7 +45057,379 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* 60 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports={render:function(){},staticRenderFns:[]}
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    [
+      _c("layout-menu"),
+      _vm._v(" "),
+      _c("layout-nav"),
+      _vm._v(" "),
+      _c("div", { staticClass: "right_col", attrs: { role: "main" } }, [
+        _c("div", {}, [
+          _vm._m(0),
+          _vm._v(" "),
+          _c("div", { staticClass: "clearfix" }),
+          _vm._v(" "),
+          _c("div", { staticClass: "row" }, [
+            _c("div", { staticClass: "col-md-12 col-sm-12 col-xs-12" }, [
+              _c("div", { staticClass: "x_panel" }, [
+                _vm._m(1),
+                _vm._v(" "),
+                _c("div", { staticClass: "x_content" }, [
+                  _c("br"),
+                  _vm._v(" "),
+                  _vm.staff
+                    ? _c("div", { staticClass: "row" }, [
+                        _c("div", { staticClass: "col-xs-12 col-sm-7" }, [
+                          _c("div", { staticClass: "form-group row" }, [
+                            _c(
+                              "label",
+                              {
+                                staticClass:
+                                  "control-label col-md-3 col-sm-3 col-xs-12 text-right"
+                              },
+                              [_vm._v("Full name")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              { staticClass: "col-md-9 col-sm-9 col-xs-12" },
+                              [
+                                _vm._v(
+                                  "\n                                            " +
+                                    _vm._s(_vm.staff.name) +
+                                    "\n                                        "
+                                )
+                              ]
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "form-group row" }, [
+                            _c(
+                              "label",
+                              {
+                                staticClass:
+                                  "control-label col-md-3 col-sm-3 col-xs-12 text-right"
+                              },
+                              [_vm._v("Telephone")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              { staticClass: "col-md-9 col-sm-9 col-xs-12" },
+                              [
+                                _vm._v(
+                                  "\n                                            " +
+                                    _vm._s(_vm.staff.telephone) +
+                                    "\n                                        "
+                                )
+                              ]
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "form-group row" }, [
+                            _c(
+                              "label",
+                              {
+                                staticClass:
+                                  "control-label col-md-3 col-sm-3 col-xs-12 text-right"
+                              },
+                              [_vm._v("Address")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              { staticClass: "col-md-9 col-sm-9 col-xs-12" },
+                              [
+                                _vm._v(
+                                  "\n                                            " +
+                                    _vm._s(_vm.staff.address) +
+                                    "\n                                        "
+                                )
+                              ]
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "form-group row" }, [
+                            _c(
+                              "label",
+                              {
+                                staticClass:
+                                  "control-label col-md-3 col-sm-3 col-xs-12 text-right"
+                              },
+                              [_vm._v("Gender")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              { staticClass: "col-md-9 col-sm-9 col-xs-12" },
+                              [
+                                _vm.staff.gender == "0"
+                                  ? _c("span", [_vm._v("Male")])
+                                  : _vm.staff.gender == "1"
+                                    ? _c("span", [_vm._v("Female")])
+                                    : _c("span", [_vm._v("Other")])
+                              ]
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "form-group row" }, [
+                            _c(
+                              "label",
+                              {
+                                staticClass:
+                                  "control-label col-md-3 col-sm-3 col-xs-12 text-right"
+                              },
+                              [_vm._v("Birthday")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              { staticClass: "col-md-9 col-sm-9 col-xs-12" },
+                              [
+                                _vm._v(
+                                  "\n                                            " +
+                                    _vm._s(_vm.staff.birthday) +
+                                    "\n                                        "
+                                )
+                              ]
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "form-group row" }, [
+                            _c(
+                              "label",
+                              {
+                                staticClass:
+                                  "control-label col-md-3 col-sm-3 col-xs-12 text-right"
+                              },
+                              [_vm._v("Created at")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              { staticClass: "col-md-9 col-sm-9 col-xs-12" },
+                              [
+                                _vm._v(
+                                  "\n                                            " +
+                                    _vm._s(_vm.staff.created_at) +
+                                    "\n                                        "
+                                )
+                              ]
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "form-group row" }, [
+                            _c(
+                              "label",
+                              {
+                                staticClass:
+                                  "control-label col-md-3 col-sm-3 col-xs-12 text-right"
+                              },
+                              [_vm._v("Modified at")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              { staticClass: "col-md-9 col-sm-9 col-xs-12" },
+                              [
+                                _vm._v(
+                                  "\n                                            " +
+                                    _vm._s(_vm.staff.modified_at) +
+                                    "\n                                        "
+                                )
+                              ]
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "form-group row" }, [
+                            _c(
+                              "label",
+                              {
+                                staticClass:
+                                  "control-label col-md-3 col-sm-3 col-xs-12 text-right"
+                              },
+                              [_vm._v("Latest logged")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              { staticClass: "col-md-9 col-sm-9 col-xs-12" },
+                              [
+                                _vm._v(
+                                  "\n                                            " +
+                                    _vm._s(_vm.staff.login_at) +
+                                    "\n                                        "
+                                )
+                              ]
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "form-group row" }, [
+                            _c(
+                              "label",
+                              {
+                                staticClass:
+                                  "control-label col-md-3 col-sm-3 col-xs-12 text-right"
+                              },
+                              [_vm._v("Part")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              { staticClass: "col-md-9 col-sm-9 col-xs-12" },
+                              [
+                                _vm.parts
+                                  ? _c(
+                                      "ul",
+                                      _vm._l(_vm.parts, function(part) {
+                                        return _c("li", [_vm._v(_vm._s(part))])
+                                      })
+                                    )
+                                  : _vm._e()
+                              ]
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "form-group row" }, [
+                            _c(
+                              "label",
+                              {
+                                staticClass:
+                                  "control-label col-md-3 col-sm-3 col-xs-12 text-right"
+                              },
+                              [_vm._v("Position")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              { staticClass: "col-md-9 col-sm-9 col-xs-12" },
+                              [
+                                _vm.positions
+                                  ? _c(
+                                      "ul",
+                                      _vm._l(_vm.positions, function(position) {
+                                        return _c("li", [
+                                          _vm._v(_vm._s(position))
+                                        ])
+                                      })
+                                    )
+                                  : _vm._e()
+                              ]
+                            )
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "col-xs-12 col-sm-5" }, [
+                          _c("div", { staticClass: "form-group row" }, [
+                            _c(
+                              "label",
+                              {
+                                staticClass:
+                                  "control-label col-md-4 col-sm-4 col-xs-12 text-right"
+                              },
+                              [_vm._v("Email")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              { staticClass: "col-md-8 col-sm-8 col-xs-12" },
+                              [
+                                _vm._v(
+                                  "\n                                            " +
+                                    _vm._s(_vm.staff.email) +
+                                    "\n                                        "
+                                )
+                              ]
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "form-group row" }, [
+                            _c(
+                              "label",
+                              {
+                                staticClass:
+                                  "control-label col-md-4 col-sm-4 col-xs-12 text-right"
+                              },
+                              [_vm._v("Username")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              { staticClass: "col-md-8 col-sm-8 col-xs-12" },
+                              [
+                                _vm._v(
+                                  "\n                                            " +
+                                    _vm._s(_vm.staff.username) +
+                                    "\n                                        "
+                                )
+                              ]
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "form-group row" }, [
+                            _c(
+                              "label",
+                              {
+                                staticClass:
+                                  "control-label col-md-4 col-sm-4 col-xs-12 text-right"
+                              },
+                              [_vm._v("Status")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              { staticClass: "col-md-8 col-sm-8 col-xs-12" },
+                              [
+                                _vm.staff.status
+                                  ? _c("span", [_vm._v("Enable")])
+                                  : _c("span", [_vm._v("Disable")])
+                              ]
+                            )
+                          ])
+                        ])
+                      ])
+                    : _vm._e()
+                ])
+              ])
+            ])
+          ])
+        ])
+      ])
+    ],
+    1
+  )
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "page-title" }, [
+      _c("div", { staticClass: "title_left" }, [
+        _c("h3", [
+          _vm._v("\n                        Staff info\n                    ")
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "x_title" }, [
+      _c("h2", [_vm._v("Staff info")]),
+      _vm._v(" "),
+      _c("div", { staticClass: "clearfix" })
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {

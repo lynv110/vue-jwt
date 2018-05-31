@@ -6,7 +6,6 @@ Vue.use(VueRouter)
 import AuthLogin from '../components/auth/Login.vue'
 import CommonDashboard from '../components/common/Dashboard.vue'
 import StaffStaffList from '../components/staff/StaffList.vue'
-
 import StaffStaffInfo from '../components/staff/StaffInfo.vue'
 import StaffStaffEdit from '../components/staff/StaffEdit.vue'
 

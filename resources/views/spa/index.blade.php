@@ -28,6 +28,12 @@
 <div class="container body">
     <div class="main_container">
         <div id="app"></div>
+        {{--<footer>
+            <div class="pull-right">
+                Staff manager SPA
+            </div>
+            <div class="clearfix"></div>
+        </footer>--}}
     </div>
 </div>
 <script src="{{ asset('js/app.js') }}"></script>
