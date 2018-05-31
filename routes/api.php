@@ -36,12 +36,23 @@ Route::group(['namespace' => 'Api'], function(){
 
     });
 
-    // After login
-    Route::group(['namespace' => 'Staff', 'prefix' => 'staff', 'middleware' => 'jwt.auth'], function(){
+    /*----------After login----------*/
+    Route::middleware('jwt.auth')->group(function(){
         // Staff
-        Route::get('staff-list', 'StaffController@index');
+        Route::group(['namespace' => 'Staff', 'prefix' => 'staff'], function(){
+            Route::get('staff-list', 'StaffController@index');
+            Route::get('staff-info/{id}', 'StaffController@info');
+        });
 
+        // Part
+        Route::group(['namespace' => 'Part', 'prefix' => 'part'], function(){
+            Route::get('part-list', 'PartController@index');
+        });
+
+        // Layout
+        Route::group(['namespace' => 'Layout', 'prefix' => 'layout'], function(){
+            Route::get('menu', 'MenuController@index');
+            Route::get('nav', 'NavController@index');
+        });
     });
-
-
 });

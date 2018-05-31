@@ -46,10 +46,13 @@ class AuthController extends Controller
     }
 
     public function user(Request $request) {
-        $user = StaffModel::findOrFail(Auth::id());
+
+        $token = $request->bearerToken();
+        $staff = JWTAuth::parseToken($token)->authenticate();
+
         return response([
             'status' => 'success',
-            'data' => $user
+            'staff' => $staff
         ]);
     }
 

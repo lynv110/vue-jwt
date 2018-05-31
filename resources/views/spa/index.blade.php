@@ -27,10 +27,10 @@
 <body class="nav-md">
 <div class="container body">
     <div class="main_container">
-        test
         <div id="app"></div>
     </div>
 </div>
+<script src="{{ asset('js/app.js') }}"></script>
 <!-- jQuery -->
 <script src="{{ asset('vendors/jquery/dist/jquery.min.js') }}"></script>
 <script src="{{ asset('vendors/bootstrap/dist/js/bootstrap.min.js') }}"></script>
@@ -53,6 +53,5 @@
 <script src="{{ asset('vendors/select2/dist/js/select2.full.min.js') }}"></script>
 <script src="{{ asset('vendors/iCheck/icheck.min.js') }}"></script>
 <script src="{{ asset('build/js/custom.min.js') }}"></script>
-<script src="{{ asset('js/app.js') }}"></script>
 </body>
 </html>
